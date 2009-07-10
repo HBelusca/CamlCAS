@@ -1,0 +1,34 @@
+let h = poly_of_list [(168.,9);(-832.,8);(457.,7);(-797.,6);(1599.,5);(-278.,4);(1434.,3);(-139.,2);(392.,1);(-273.,0)];;
+let f = poly_of_list [(1.,10);(-10.,9);(30.,8);(-30.,7);(47.,6);(-90.,5);(46.,4);(-70.,3);(77.,2);(49.,0)];;
+part_frac_decompos h f (map_list_to_vector (square_free_factor f 1));;
+
+let essai = f ^$ 5;;
+part_frac_decompos h essai (map_list_to_vector (square_free_factor essai 1));;
+
+
+
+
+(* !!!!!!!!!! A VERY IMPORTANT BUG !!!!!!!!!! *)
+
+trace "mult_num";;
+trace "int_of_big_int";;
+
+
+set_normalize_ratio true;;
+(1/50) */ (- 76383613250) bugue :
+mult_num <-- 1/50
+mult_num --> <fun>
+mult_num* <-- -76883613250
+int_of_big_int <-- <abstr>
+int_of_big_int raises Failure "int_of_big_int"
+mult_num* raises Failure "int_of_big_int"
+Uncaught exception: Failure "int_of_big_int"
+
+
+set_normalize_ratio false;;
+(1/50) */ (- 76383613250) ne bugue pas !!!! :
+mult_num <-- 1/50
+mult_num --> <fun>
+mult_num* <-- -76883613250
+mult_num* --> -76883613250/50
+- : num = -76883613250/50
